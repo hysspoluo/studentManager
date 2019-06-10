@@ -78,7 +78,16 @@ def sort():
     return
 #统计人数
 def total():
-    return
+    if os.path.exists(fileName):
+        with open(fileName,'r') as rfile:
+            student_old = rfile.readlines()
+            if student_old:
+                print("总共有%d名学生"%len(student_old))
+            else:
+                print("目前没有数据")
+    else:
+        print("目前没有数据")
+
 #显示学生信息
 def show():
     student_new = []
@@ -92,9 +101,19 @@ def show():
     else:
         print("没有数据")
 
-def show_student(student_list):
+def show_student(student_list):#sutdent_list为列表，每个元素为一个学生的字典信息
     if not student_list:
         print("没有数据")
+        return
+    #有数据，则开始处理显示
+    format_title = "{:^6}{:^12}\t{:^8}\t{:^10}\t{:^10}"#format格式设置
+    print(format_title.format("ID","姓名","english","python","c"))
+    for student_info in student_list:
+        print(format_title.format(student_info.get("id"),
+                                  student_info.get("name"),
+                                  student_info.get("english"),
+                                  student_info.get("python"),
+                                  student_info.get("c")))
 
 #保存学生信息到文件,student为list文件
 def save(student):
@@ -103,7 +122,7 @@ def save(student):
     except:
         student_txt = open(fileName,"w")#无文件则新建
     for stu_info in student:
-        student_txt.write(str(stu_info)+'\n')
+        student_txt.write(str(stu_info)+'\n')#按行存储
     student_txt.close()
 
 
