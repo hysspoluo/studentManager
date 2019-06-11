@@ -207,7 +207,44 @@ def modify():
 
 #信息排序
 def sort():
-    return
+    #先显示目前的数据
+    show()
+    if os.path.exists(fileName):
+        with open(fileName,'r') as rfile:
+            student_old = rfile.readlines()
+            student_new = []
+            for list in student_old:
+                d = dict(eval(list))
+                student_new.append(d)
+    else:
+        return
+    while(1):
+        ascORdsc = input("请选择排序方式(0升序,1降序):")
+        if ascORdsc == "0":
+            ascORdsc_bool = False
+            break
+        elif ascORdsc == "1":
+            ascORdsc_bool = True
+            break
+        else:
+            print("输入有误，请重新输入")
+            continue
+    while(1):
+        mode = input("请选择排序方式(1 英语；2 python；3 c语言):")
+        #########################lambd函数及list的sort函数，需要学习
+        if mode == "1":
+            student_new.sort(key=lambda  x:x["english"],reverse=ascORdsc_bool)
+            break
+        elif mode =="2":
+            student_new.sort(key=lambda x: x["python"], reverse=ascORdsc_bool)
+            break
+        elif mode == "3":
+            student_new.sort(key=lambda x: x["c"], reverse=ascORdsc_bool)
+            break
+        else:
+            print("输入有误，请重新输入")
+            continue
+    show_student(student_new)
 #统计人数
 def total():
     if os.path.exists(fileName):
@@ -276,6 +313,7 @@ def main():
         #输入的数字正确，开始执行
         if option_int == 0: #退出系统
             print("已退出系统")
+
             ctrl = False
         if option_int == 1:
             insert()#新建信息

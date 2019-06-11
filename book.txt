@@ -1,5 +1,4 @@
-{'id': '1', 'name': '1', 'english': 6, 'python': 6, 'c': 6}
-{'id': '2', 'name': '2', 'english': 2, 'python': 2, 'c': 2}
+{'id': '2', 'name': '2', 'english': 0, 'python': 0, 'c': 0}
 {'id': '3', 'name': '3', 'english': 3, 'python': 3, 'c': 3}
 {'id': '4', 'name': '4', 'english': 4, 'python': 4, 'c': 4}
 {'id': '44', 'name': '44', 'english': 44, 'python': 44, 'c': 44}
